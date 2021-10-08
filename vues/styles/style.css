@@ -1,0 +1,213 @@
+/* Corps principal */
+body {
+    background-color: black;
+    font-family: Helvetica;
+    margin: 0;
+}
+
+/* Erreur */
+main > div {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+/* Nav */
+nav {
+    position: sticky;
+    top: 0;
+
+    background-color: rgba(50, 50, 50, 0.5);
+
+    display: inline-block;
+    justify-content: justify;
+    width: 100%;
+
+    list-style-type: none;
+}
+
+/* Items */
+li {
+    text-decoration: none;
+    float: right;
+    margin-right: 10px;
+}
+
+/* Ancres */
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    font-weight: bold;
+}
+
+/* Titre */
+nav > a {
+    font-size: 20px;
+}
+
+/* Slider */
+main > section {
+    /* Image de fond */
+    background-image: url("../assets/background.jpg");
+    background-position: 50% 50%;
+
+    text-align: center;
+    height: 800px;  
+}
+
+/* Spacing */
+main section div {
+    height: 30%;
+}
+
+/* Titre et bouton */
+main section article {
+    color: white;
+
+    /* Fond */
+    border-radius: 20px;
+    padding-bottom: 10px;
+
+    /* Centrer à droite */
+    width: 40%;
+    margin: auto;
+    float: right;
+}
+
+/* Titre */
+main section article h1 {
+    font-size: 28px;
+    font-family: Helvetica;
+}
+
+/* Texte */
+main section article p {
+    font-size: 16px;
+    color: lightgray;
+    font-family: "Courier New", Helvetica;
+    margin-bottom: 40px;
+}
+
+/* Bouton */
+.button {
+    text-decoration: none;
+    color: gray;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
+
+.button:hover {
+    background-color: gray;
+    color: white;
+}
+
+.disponible {
+    border-color: #66CDAA;  
+}
+
+.disabled {
+    pointer-events: none;
+    border-color: #F08080;
+}
+
+/* Footer */
+footer {
+    color: lightgray;
+    text-align: center;
+}
+
+/* Forms */
+form {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    border: dotted;
+    border-color: rgba(100, 100, 100, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+form input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+
+form p {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+form input[type=submit] {
+    height: 50px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+form input:hover[type=submit] {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.box > div {
+    display: inline-block; 
+
+    width: 300px;
+    height: 400px;
+
+    vertical-align: top;
+
+    margin: 10px;
+
+    border: solid;
+    border-color: gray;
+}
+
+.box > div > p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.box > div > p:first-child {
+    margin: 10px 0px 0px 0px;
+    font-size: 24px;
+}
+
+.box > div > p:nth-child(2) {
+    margin: 0;
+    font-size: 16px;
+}
+
+.box > div > img {
+    width: 250px;
+    height: 250px;
+
+    object-fit: cover;
+    
+    margin: 10px 10px 20px 10px;
+    border: solid;
+    border-color: gray;
+}
+
+.box > div > div {
+    position: relative;
+    top: -50px;
+    font-size: 12px;
+    height: 0;
+    color: gray;
+}

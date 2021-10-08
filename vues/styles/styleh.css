@@ -1,0 +1,12 @@
+/* Slider */
+body section article {
+    /* Fond */
+    background-color:rgba(0, 0, 0, 0.8);
+
+    /* Centrer */
+    width: 60%;
+    margin: auto;
+    float: none;
+
+    padding: 30px 0 30px 0;
+}
