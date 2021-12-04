@@ -1,38 +1,44 @@
+<div>
+    <h1>Parcourir les véhicules</h1>
+</div>
+
 <div class='box'>
     <?php
-        foreach($vehicules as $vehicule) {
-            echo '<div>';
-                echo '<p>' . $vehicule['type'] . '</p>';
-                echo '<p>' . $vehicule['nb'] . '</p>';
+        $boite = '
+            <div>
+                <p>%s</p>
+                <p>%s€ par jour</p>
+                <img class="%s" src="./vues/assets/vehicules/%s"/>
+                <div>%s</div>
+                <a class="button %s" href="index.php?controle=vehicule&action=visualiser&id=%d#louer">%s</a>
+            </div>';    
 
-                echo '<img src="' . $vehicule['photo'] . '"/>';
-
-                echo "<div>Appuyez pour plus d'informations</div>";
-
-                $loué = $vehicule["etatL"] == 1;
-
-                echo '<a class="button ';
-                
-                if($loué) 
-                    echo 'disabled';
-                else
-                    echo 'disponible';
-                
-                echo '" href="index.php?controle=vehicule&action=commander">';
-                
-                if($loué) 
-                    echo "Non disponible"; 
-                else 
-                    echo "Louer";
-                
-                echo '</a>';
-            echo '</div>';
+        foreach($vehicules as $i => $vehicule) {
+            $dans_panier = isset($_SESSION['panier'][$vehicule['veh_id']]);
+            $etat = $vehicule["etatL"];
+            
+            echo sprintf($boite, 
+                $vehicule['type'],
+                $vehicule['tarif'], 
+                $etat != 'disponible' ? 'indisponible' : $etat, 
+                $vehicule['photo'],
+                $etat == 'disponible' ? "Appuyez pour plus d'informations" : "",
+                $etat != 'disponible' ? 'disabled' : 'enabled',
+                $i + 1,
+                $etat == 'en_revision' ? "En revision" : ($etat == 'disponible' ? ($dans_panier ? "Retirer du panier" : "Ajouter au panier") : 'Indisponible'));
         }
     ?>
 </div>
 
 <script>
     let elements = document.getElementsByTagName('img');
-    for(let index in elements)
-        elements[index].onclick = function() { alert("Informations supplémentaires"); };
+
+    <?php 
+        foreach($vehicules as $i => $vehicule) { 
+            echo 'elements[' . $i . '].onclick = function() {'; 
+                echo 'if(elements[' . $i . '].className == "disponible")';
+                echo 'window.location.replace("index.php?controle=vehicule&action=visualiser&id=' . ($vehicule['veh_id']) . '");';
+            echo '};';
+        }
+    ?>
 </script>

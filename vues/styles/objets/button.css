@@ -1,0 +1,25 @@
+/* Bouton */
+.button {
+    text-decoration: none;
+    color: gray;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.button:hover {
+    background-color: gray;
+    color: white;
+}
+
+.enabled {
+    border-color: #66CDAA;  
+}
+
+.disabled {
+    pointer-events: none;
+    border-color: #F08080;
+}

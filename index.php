@@ -7,7 +7,7 @@
 	}
     else { 
 	    $controle = "client";
-	    $action= "accueil";
+	    $action = "accueil";
 	}
 
 	$path = './controles/' . $controle . '.php';

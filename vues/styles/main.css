@@ -1,0 +1,13 @@
+/* Corps principal */
+body {
+    background-color: black;
+    font-family: Helvetica;
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    color: lightgray;
+    text-align: center;
+    margin-top: 100px;
+}

@@ -1,0 +1,57 @@
+/* Slider */
+main > section {
+    /* Image de fond */
+    background-image: url("../../assets/background.jpg");
+    background-position: 50% 50%;
+
+    text-align: center;
+    height: 800px;  
+}
+
+/* Spacing */
+main section div {
+    height: 30%;
+}
+
+/* Titre et bouton */
+main section article {
+    color: white;
+
+    /* Fond */
+    border-radius: 20px;
+    padding-bottom: 10px;
+
+    /* Centrer à droite */
+    width: 40%;
+    margin: auto;
+    float: right;
+}
+
+/* Titre */
+main section article h1 {
+    font-size: 28px;
+    font-family: Helvetica;
+}
+
+/* Texte */
+main section article p {
+    font-size: 16px;
+    color: lightgray;
+    font-family: "Courier New", Helvetica;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+    /* Slider */
+    body section article {
+        /* Fond */
+        background-color:rgba(0, 0, 0, 0.8);
+
+        /* Centrer */
+        width: 60%;
+        margin: auto;
+        float: none;
+
+        padding: 30px 0 30px 0;
+    }
+}

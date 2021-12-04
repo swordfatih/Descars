@@ -1,0 +1,104 @@
+main {
+    text-align: center;
+}
+
+/* Bouton retour */ 
+main a {
+    margin: 10px;
+    font-size: 20px;
+}
+
+/* Boîte */
+main div {
+    color: white;
+    text-align: center;
+
+    width: 55%;
+    margin: auto;
+
+    border: 2px solid lightgray;
+    border-radius: 5px;
+
+    font-size: 0;
+    
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+/* Titre  */
+main div h1 { 
+    background-color: rgb(162, 206, 247);
+    color: black;
+
+    line-height: 50px;
+    height: 50px;
+
+    font-size: 2vw;
+
+    display: block;
+    margin: 0;
+}
+
+/* Image  */
+main div img {
+    width: 100%;
+    margin: 0px;
+}
+
+main div > p:first-of-type {
+    background-color: rgba(255, 255, 255);
+    color: black;
+
+    display: block;
+    margin: 0px;
+
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 2vw;
+}
+
+main p {
+    font-size: 20px;
+    margin: 0px;
+}
+
+/* Tables */
+
+main div div {
+    width: 80%;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid gray;
+}
+
+div table tr:hover > th {
+    background-color: rgba(162, 206, 247, 0.486);
+}
+
+div table {
+    font-size: 16px;
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+div table th {
+    width: 40%;
+    border: 1px dotted gray;
+}
+
+div table td {
+    width: 60%;
+    border: 1px dotted gray;
+}
+
+@media screen and (max-width: 1200px) {
+    main div {
+        width: 90%;
+    }
+
+    main form {
+        width: 90%;
+    }
+}

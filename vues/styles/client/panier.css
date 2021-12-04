@@ -1,0 +1,24 @@
+main {
+    color: white;
+    text-align: center;
+}
+
+main table {
+    width: 60% !important;
+    margin: auto;
+}
+
+main form {
+    width: 60%;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    main form {
+        width: 95%;
+    }
+
+    main table {
+        width: 95% !important;
+    }
+}

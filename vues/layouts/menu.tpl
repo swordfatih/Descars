@@ -1,15 +1,27 @@
 <nav>
-    <a href="index.php?controle=client&action=accueil">Descars</a>
-    <li><a href="index.php?controle=client&action=accueil">🖥️ Accueil</a></li>
+<a href="index.php?controle=client&action=accueil">Descars</a>
 
-    <?php if(isset($_SESSION['client'])) { ?>
-        <li><a href="index.php?controle=client&action=deconnection">🏃‍♀️ Se déconnecter</a></li>
-        <li><a href="index.php?controle=abonnes&action=dashboard">🖤 Tableau de bord</a></li>
+    <div>
+        <ul>
+            <?php 
+                $lien = '<li><a href="index.php?controle=%s&action=%s">%s</a></li>';
 
-    <?php } else { ?>
-        <li><a href="index.php?controle=client&action=authentification">🔐 S'identifier</a></li>
-    <?php } ?>
+                echo sprintf($lien, 'client', 'accueil', '🖥️ Accueil');
+                echo sprintf($lien, 'vehicule', 'parcourir', '🚗 Parcourir');
 
-    <li><a href="index.php?controle=vehicule&action=parcourir">🚗 Parcourir</a></li>
-    <li><a href="index.php?controle=client&action=panier">🛍️ Panier</a></li>
+                if(isset($_SESSION['client'])) {
+                    if($_SESSION['client']['role'] == 'client') {
+                        echo sprintf($lien, 'client', 'dashboard', '🖤 Tableau de bord');
+                        echo sprintf($lien, 'client', 'panier', '🛍️ Panier');
+                    } else {
+                        echo sprintf($lien, 'loueur', 'gestion', '⚙️ Gestion');
+                    }
+
+                    echo sprintf($lien, 'client', 'deconnection', '🏃‍♀️ Se déconnecter');
+                } else {
+                    echo sprintf($lien, 'client', 'authentification', "🔐 S'authentifier");
+                }
+            ?>
+        </ul>
+    </div>
 </nav>

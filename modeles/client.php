@@ -12,11 +12,20 @@
 	
 		if(count($resultat) > 0) 
 		{
-			$_SESSION["client"] = result_to_client($resultat);
-			return true;
+			if($data["role"] == 'loueur') {
+				require('./modeles/loueur.php');
+
+				if(!est_loueur($resultat[0]['cli_id']))
+					return "Vous n'êtes pas un loueur.";
+			}
+
+			$_SESSION["client"] = $resultat[0];
+			$_SESSION["client"]["role"] = $data['role'];
+
+			return "Succès";
 		}
-		
-		return false;
+
+		return "Identifiants invalides.";
 	}
 
 	function inscrire($data) 
@@ -27,16 +36,18 @@
 			if(client_by_email($data['email']) != null)
 				return "Un compte a déjà été crée avec l'email donné.";
 
-			$stmt = $pdo->prepare('INSERT INTO `client` (`pseudo`, `nom`, `adresse`, `email`, `mdp`) VALUES (:pseudo, :nom, :adresse, :email, :mdp);');
+			$stmt = $pdo->prepare('INSERT INTO `client` (`pseudo`, `nom`, `adresseE`, `nomE`, `email`, `mdp`) VALUES (:pseudo, :nom, :adresseE, :nomE, :email, :mdp);');
 			$stmt->bindParam('pseudo', $data['pseudo'], PDO::PARAM_STR);
 			$stmt->bindParam('nom', $data['nom'], PDO::PARAM_STR);
-			$stmt->bindParam('adresse', $data['adresse'], PDO::PARAM_STR);
+			$stmt->bindParam('adresseE', $data['adresseE'], PDO::PARAM_STR);
+			$stmt->bindParam('nomE', $data['nomE'], PDO::PARAM_STR);
 			$stmt->bindParam('email', $data['email'], PDO::PARAM_STR);
 			$stmt->bindParam('mdp', $data['mdp'], PDO::PARAM_STR);
 
 			$stmt->execute();
 
 			$_SESSION["client"] = client_by_email($data['email']);
+			$_SESSION["client"]["role"] = "client";
 
 			return 0;
 		} catch( PDOException $e ) {
@@ -46,32 +57,39 @@
 		return 'Une erreur est survenue lors de votre inscription.';
 	}
 
-	function result_to_client($resultat) 
-    {
-        $client = array();
-                
-        $client["cli_id"] = $resultat[0]['cli_id'];
-        $client["nom"] = $resultat[0]['nom'];
-        $client["adresse"] = $resultat[0]['adresse'];
-        $client["pseudo"] = $resultat[0]['pseudo'];
-        $client["email"] = $resultat[0]['email'];
-        
-        return $client;
-    }
-
 	function client_by_email($email) 
     {
         require('./modeles/connect.php');
 		
 		try {
-			$stmt = $pdo->prepare('SELECT `cli_id`, `nom`, `pseudo`, `adresse`, `email` FROM `client` WHERE email=:email;');
+			$stmt = $pdo->prepare('SELECT `cli_id`, `nom`, `pseudo`, `email`, `nomE`, `adresseE` FROM `client` WHERE email=:email;');
             $stmt->bindParam('email', $email, PDO::PARAM_STR);
             $stmt->execute();
             
             $resultat = $stmt->fetchAll();
             
             if(count($resultat) > 0) 
-                return result_to_client($resultat);
+                return $resultat[0];
+		} catch( PDOException $e ) {
+			echo "Erreur SQL :", $e->getMessage();
+		}
+
+		return null;
+    }
+
+	function client_by_id($cli_id) 
+    {
+        require('./modeles/connect.php');
+		
+		try {
+			$stmt = $pdo->prepare('SELECT `cli_id`, `nom`, `pseudo`, `email`, `nomE`, `adresseE` FROM `client` WHERE cli_id=:cli_id;');
+            $stmt->bindParam('cli_id', $cli_id, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $resultat = $stmt->fetchAll();
+            
+            if(count($resultat) > 0) 
+                return $resultat[0];
 		} catch( PDOException $e ) {
 			echo "Erreur SQL :", $e->getMessage();
 		}

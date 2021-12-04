@@ -1,0 +1,45 @@
+.liste {
+    color: rgb(20, 20, 20);
+
+    width: 70%;
+    margin: 10px auto;
+
+    word-wrap: break-word;
+
+    table-layout: fixed;
+}
+
+.liste tr:first-of-type {
+    height: 50px;
+}
+
+.liste th {
+    background-color: #7FEFBD;
+}
+
+.liste th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.liste th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.liste td {
+    background-color: #F3EFE0;
+}
+
+.liste img {
+    width: 100%; 
+    height: 100%;
+}
+
+.liste a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1200px) {
+    .liste {
+        width: 95%;
+    }
+}

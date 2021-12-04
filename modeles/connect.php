@@ -3,7 +3,7 @@
 	$hostname = "localhost";
 	$bdd = "descars";
 	$username = "root";
-	$password = "root";
+	$password = "";
 
 	try
 	{

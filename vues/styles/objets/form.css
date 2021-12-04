@@ -1,0 +1,101 @@
+/* Forms */
+form {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    border: dotted;
+    border-color: rgba(100, 100, 100, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+
+    box-sizing: border-box;  
+
+    overflow: hidden;
+}
+
+form input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+
+form p {
+    margin: 0;
+    font-size: 20px;
+}
+
+form small {
+    margin: 0;
+    color: gray;
+}
+
+form input[type=text]:disabled {
+    background-color: rgb(61, 61, 61);
+}
+
+form h1 {
+    margin-top: 0;
+}
+
+form input[type=submit] {
+    height: 50px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+form input:hover[type=submit] {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+/* Radio buttons */
+form > div {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+form > div > div {
+    display: table-cell;
+    margin: 0;
+}
+
+#res { 
+    color: rgb(255, 204, 204); 
+}
+
+form input[type=file] {
+    text-align: center;
+}
+
+form button {
+    width: 50%;
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+form .pair {
+    display: block;
+}
+
+form .pair input {
+    width: 40%;
+    display: inline-block;
+}
+
+form .pair input:first-child {
+    margin-right: 10px;
+}
+
+form .pair span {
+    cursor: pointer;
+}
